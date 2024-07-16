@@ -11,7 +11,7 @@ dbConnection()
 // app.use(middleware.requestLogger)
 
 app.use('/api', authRouter);
-app.use('/',(req,res)=>{
+app.use('/api/ping',(req,res)=>{
     res.status(200).json({'message':'welcome everybody'})
 })
 
