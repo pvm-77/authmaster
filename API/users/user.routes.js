@@ -3,6 +3,6 @@ import { getAllUsers } from "./user.handlers.js";
 const userRouter=Router();
 
 
-userRouter.get('/',getAllUsers)
+userRouter.get('/allusers',getAllUsers)
 
 export default userRouter;
