@@ -9,51 +9,51 @@ const authRouter=Router();
 
 // 1. user registration and verification
 
-authRouter.post('/auth/signup',signUpValidatorMiddleware,signup)
-authRouter.get('/auth/verify-email?token')
-authRouter.post('/auth/resend-verification-email')
+authRouter.post('/signup',signUpValidatorMiddleware,signup)
+authRouter.get('/verify-email?token')
+authRouter.post('/resend-verification-email')
 
 
 // 2.user login and session management
-authRouter.post('/auth/signin',signInValidatorMiddleware,signin)
-authRouter.post('/auth/signout',signout)
-authRouter.post('/auth/refresh-token')
+authRouter.post('/signin',signInValidatorMiddleware,signin)
+authRouter.post('/signout',signout)
+authRouter.post('/refresh-token')
 
 // 3.password management
-authRouter.post('/auth/forgot-password')
-authRouter.post('/auth/reset-password?token=')
-authRouter.post('/auth/change-password')
+authRouter.post('/forgot-password')
+authRouter.post('/reset-password?token=')
+authRouter.post('/change-password')
 
 // 4.Multi-Factor Authentication
-authRouter.post('/auth/mfa/enable')
-authRouter.post('/auth/mfa/verify')
-authRouter.post('/auth/mfa/disable')
+authRouter.post('/mfa/enable')
+authRouter.post('/mfa/verify')
+authRouter.post('/mfa/disable')
 
 // 5. Account Management
-authRouter.post('/auth/deactivate-account')
-authRouter.post('/auth/delete-account')
+authRouter.post('/deactivate-account')
+authRouter.post('/delete-account')
 
 // 6. third party authentication
 // oauth login
-authRouter.get('/auth/oauth/:provider')
+authRouter.get('/oauth/:provider')
 // oauth callback
-authRouter.get('/auth/oauth/:provider/callback')
+authRouter.get('/oauth/:provider/callback')
 
 // 7. security features
 
-authRouter.get('/auth/login-history')
+authRouter.get('/login-history')
 
-authRouter.post('/auth/whitelist-ip')
-authRouter.delete('/auth/whitelist-ip')
+authRouter.post('/whitelist-ip')
+authRouter.delete('/whitelist-ip')
 
 // api key management 
 authRouter.post('auth/api-key')
-authRouter.delete('/auth/api-key')
+authRouter.delete('/api-key')
 
-authRouter.post('/auth/captcha/enable')
-authRouter.post('/auth/captcha/disable')
-authRouter.get('/auth/notifications')
-authRouter.put('/auth/notifications')
+authRouter.post('/captcha/enable')
+authRouter.post('/captcha/disable')
+authRouter.get('/notifications')
+authRouter.put('/notifications')
 
 
 export default  authRouter;

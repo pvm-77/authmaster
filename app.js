@@ -11,8 +11,8 @@ app.use(express.json())
 dbConnection()
 // app.use(middleware.requestLogger)
 
-app.use('/api', authRouter);
-app.use('/api', userRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
 app.use('/api/ping',(req,res)=>{
     res.status(200).json({'message':'welcome everybody'})
 })
