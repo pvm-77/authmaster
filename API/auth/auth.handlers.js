@@ -1,5 +1,12 @@
-
-
+import { registerUser } from "./auth.js";
+export const signup=async(req,res)=>{
+    try {
+        const newUser=await registerUser(req.body)
+        res.status(201).json(newUser);
+    } catch (error) {
+        
+    }
+}
 
 export const signin=async(req,res)=>{
     try {
@@ -11,13 +18,7 @@ export const signin=async(req,res)=>{
 
 }
 
-export const signup=async(req,res)=>{
-    try {
-        const {fullname,email,password}=req.body;
-    } catch (error) {
-        
-    }
-}
+
 
 
 export const signout=async()=>{}

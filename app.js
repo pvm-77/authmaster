@@ -1,6 +1,7 @@
 import  express from 'express';
 import cors from 'cors'
-import authRouter from './API/auth/index.js'
+import authRouter from './API/auth/index.js';
+import userRouter from './API/users/user.routes.js';
 import errorHandler from './middleware/error.js';
 import { dbConnection } from './config/db.js';
 const app=express()
@@ -11,11 +12,14 @@ dbConnection()
 // app.use(middleware.requestLogger)
 
 app.use('/api', authRouter);
+app.use('/api', userRouter);
 app.use('/api/ping',(req,res)=>{
     res.status(200).json({'message':'welcome everybody'})
 })
 
 app.use(errorHandler)
+
+
 
 
 export default app;
