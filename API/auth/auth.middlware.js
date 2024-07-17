@@ -1,18 +1,15 @@
 
 import { signInValidationSchema,signUpValidationSchema } from "./auth.validation.js"
-
-
-
-
 export const signUpValidatorMiddleware=async(req,res,next)=>{
     try {
-        console.log('in signup middleware ')
+        console.log('in signup middleware ',req.body)
         await signUpValidationSchema.validateAsync(req.body)
         next()
     } catch (error) {
         console.log('in signup middlware error');
-        throw new Error(error)
         console.log(error)  
+        throw new Error(error)
+        
        
         // next(error)  
     }
