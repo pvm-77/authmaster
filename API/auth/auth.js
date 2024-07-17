@@ -2,7 +2,7 @@
 import User from "../users/user.model.js"
 
 export const registerUser=async(data)=>{
-    console.log('the data in service:',data)
+  
     try {
         const newUser=new User();
         newUser.fullname=data.fullname
