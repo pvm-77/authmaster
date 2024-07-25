@@ -1,24 +1,25 @@
 
-import { signin,signup,signout } from "./auth.handlers.js";
+import { signin,signup,signout,deactivateAccount,deleteAccount } from "./auth.handlers.js";
 import { Router } from "express";
-import { signInValidationSchema } from "./auth.validation.js";
 import { signInValidatorMiddleware, signUpValidatorMiddleware } from "./auth.middlware.js";
 // auth mini app
+import dotenv from 'dotenv'
+import { verifyJWT } from "../../middleware/token.js";
+dotenv.config()
 const authRouter=Router();
 
 
 // 1. user registration and verification
-
 authRouter.post('/signup',signUpValidatorMiddleware,signup)
 authRouter.get('/verify-email?token')
 authRouter.post('/resend-verification-email')
+
 
 
 // 2.user login and session management
 authRouter.post('/signin',signInValidatorMiddleware,signin)
 authRouter.post('/signout',signout)
 authRouter.post('/refresh-token')
-
 // 3.password management
 authRouter.post('/forgot-password')
 authRouter.post('/reset-password?token=')
@@ -30,8 +31,8 @@ authRouter.post('/mfa/verify')
 authRouter.post('/mfa/disable')
 
 // 5. Account Management
-authRouter.post('/deactivate-account')
-authRouter.post('/delete-account')
+authRouter.post('/deactivate-account',verifyJWT,deactivateAccount)
+authRouter.post('/delete-account',verifyJWT,deleteAccount)
 
 // 6. third party authentication
 // oauth login

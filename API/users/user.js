@@ -14,13 +14,28 @@ export const fetchAllUsers=async()=>{
 
 
 export const fetchUserByCriteria=async(criteria)=>{
+    console.log('the criterial in service :',criteria)
     try {
-        const data=await User.find({criteria})
+        const data=await User.find(criteria);
+        console.log('the data by service',data)
+        return data;
         
     } catch (error) {
+        console.log(error)
         
     }
 }
+
+
+export const deleteUserById=async(id)=>{
+    try {
+        const user=await User.findByIdAndDelete(id);
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 export const isPasswordMatch=async()=>{

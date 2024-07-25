@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
         default: [ROLES.USER],
         enum: Object.values(ROLES)
     },
+    isActive:{
+        type:Boolean,
+        default:true,
+    },
     fullname: {
         type: String,
         required: true,
